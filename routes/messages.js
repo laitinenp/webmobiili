@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
 
 /* POST uusi message (bodyssä json-muodossa). Id lasketaan globaalilla juoksevalla numerolla idcounter */
 router.post('/', function(req, res, next) {
+    console.log(req.body)
     db.createMessage( req.body, function( data ) {
         res.status(201).send("Created succesfully " + data + ".")
     })
