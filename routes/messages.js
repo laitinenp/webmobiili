@@ -15,7 +15,6 @@ router.get('/', function(req, res) {
 
 /* POST uusi message (bodyssä json-muodossa). Id lasketaan globaalilla juoksevalla numerolla idcounter */
 router.post('/', function(req, res, next) {
-    console.log(req.body)
     db.createMessage( req.body, function( data ) {
         res.status(201).send("Created succesfully " + data + ".")
     })
@@ -25,7 +24,9 @@ router.post('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
     let id = req.params.id
     res.header('Cache-Control', 'no-cache, no-store, must-revalidate')
-    res.json( db.findMessageById( req.params.id ))
+    db.findMessageById( req.params.id, function( aMessage ) {
+        res.json( aMessage )
+    })
 });
 
 /* PUT päivitä yksittäinen mökin kenttä json body { fieldName: newValue }. */
