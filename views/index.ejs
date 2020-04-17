@@ -22,6 +22,7 @@
             }
 
             $(document).ready(function() {
+                populateMessages()
                 setInterval( populateMessages, 5000 )
             })
         </script>
@@ -49,14 +50,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for ( let i = 0; i < messages.length; i++ ) { %>
-                                <tr>
-                                    <td><%= messages[i].id %></td>
-                                    <td><%= messages[i].sender %></td>
-                                    <td><%= messages[i].topic %></td>
-                                    <td><%= messages[i].message %></td>
-                                </tr>
-                            <% } %>
+                            <!-- tähän kohtaan populateMessages-javascript-funktio täydentää viestit -->>
                         </tbody>
                         <tfoot>
                             <tr>
