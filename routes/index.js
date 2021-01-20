@@ -18,4 +18,8 @@ router.get('/apidescr', function(req, res, next) {
   res.render('apidescr', {})
 })
 
+router.get('/fab', function(req, res, next) {
+  res.render('test', {})
+})
+
 module.exports = router;

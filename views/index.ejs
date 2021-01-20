@@ -5,69 +5,72 @@
 
     <head>
         <% include head %>
-        <script>
-            function populateMessages() {
-                $.getJSON("/messages", function(data) {
-                    let htmlstr = "<tbody>"
-                    $('tbody').remove()
-                    for (let i = data.length-1; i >= 0 ; i-- )
-                        htmlstr +=
-                            '<tr><td>'+data[i].id+'</td>' +
-                            '<td>'+data[i].sender+'</td>' +
-                            '<td>'+data[i].topic+'</td>' +    
-                            '<td>'+data[i].message+'</td></tr>'
-                    htmlstr += '</tbody>'
-                    $("thead").after(htmlstr)
-                })
-            }
-
-            $(document).ready(function() {
-                populateMessages()
-                setInterval( populateMessages, 5000 )
-            })
-        </script>
+        <!-- luetaan omat javascriptit viestilistan ja lähetä-painikkeen käsittelemiseksi -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/script/index.js"></script>
     </head>
 
-    <body class="container">
+    <body class="container-fluid">
 
         <header>
             <% include header %>
         </header>
 
         <main>
-            <div class="jumbotron">
-                <div class="row justify-content-center align-items-center">
-                    <h1><%= title %></h1>
+            <div class="container p-3">
+                <form id="messageform">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="mytopic">Kategoria</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mytopic" name="mytopic" placeholder="Kirjoita tähän kategoria">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="mymessage">Viesti</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mymessage" name="mymessage" placeholder="Kirjoita tähän viestisi">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> </label>
+                        <div class="col-sm-9">
+                            <button id="sendmessage" type="button" class="btn btn-success">Lähetä</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel panel-default p-3">
+                <div class="panel-heading">
+                    Viestien virta
                 </div>
-                <div class="row align-items-center">
+                <div class="panel-body">
                     <table class="table table-striped table-bordered table-sm">
-                        <thead>
+                        <thead id="messageshead">
                             <tr>
-                                <th>id</th>
-                                <th>sender</th>
-                                <th>topic</th>
-                                <th>message</th>
+                                <th>tunnus</th>
+                                <th>lähettäjä</th>
+                                <th>kategoria</th>
+                                <th>viesti</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- tähän kohtaan populateMessages-javascript-funktio täydentää viestit -->
+                        <tbody id="messagesbody">
+                            <!-- tähän kohtaan populateMessages-javascript-funktio täydentää viestit $("#messagesbody").html(htmlstr) -->
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>id</th>
-                                <th>sender</th>
-                                <th>topic</th>
-                                <th>message</th>
+                                <th>tunnus</th>
+                                <th>lähettäjä</th>
+                                <th>kategoria</th>
+                                <th>viesti</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-            </div>
+            </div> 
         </main>
 
         <footer>
             <% include footer %>
         </footer>
-
     </body>
 </html>
