@@ -1,0 +1,57 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <% include head %>
+        <!-- luetaan omat javascriptit viestilistan ja lähetä-painikkeen käsittelemiseksi -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/script/register.js"></script>
+    </head>
+
+    <body class="container-fluid">
+
+        <header>
+            <% include header %>
+        </header>
+
+        <main>
+            <div class="container p-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Syötä käyttäjän tiedot
+                    </div>
+                    <div class="panel-body">
+                        <form id="registerform" method="POST" action="/user">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="username">Käyttäjätunnus</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="username" name="username" 
+                                        placeholder="Kirjoita nimesi">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="password">Salasana</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Kirjoita tähän salasanasi">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label"> </label>
+                                <div class="col-sm-9">
+                                    <button id="sendregister" type="submit" class="btn btn-success">Lähetä</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <% include footer %>
+        </footer>
+    </body>
+</html>

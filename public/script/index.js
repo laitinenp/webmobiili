@@ -20,7 +20,6 @@ $(document).ready(function() {
     setInterval( populateMessages, 2000 )
     $("#sendmessage").on('click', function(){
         $.post('/messages', {
-            "sender":"anonymous",
             "topic": document.getElementById("messageform").elements["mytopic"].value,
             "message": document.getElementById("messageform").elements["mymessage"].value
         })

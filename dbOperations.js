@@ -1,4 +1,5 @@
-var idcounter = 2;
+var msgcounter = 2
+var usercounter = 1
 
 // Simuloitu tietokantadata
 var messages = [
@@ -13,6 +14,13 @@ var messages = [
         "sender":"Melinda",
         "topic":"SmartICT",
         "message":"Terkkui"
+    }
+]
+
+var users = [
+    {
+        'username': 'username',
+        'password': 'password'
     }
 ]
 
@@ -33,7 +41,7 @@ module.exports = {
     },
 
     createMessage : function ( msg, callback ) {
-        let id = idcounter++
+        let id = msgcounter++
         messages[ id ] = msg
         messages[ id ].id = id
         callback(id)
@@ -41,6 +49,23 @@ module.exports = {
 
     modifyMessageById : function ( id, updatedata ) {
 
+    },
+
+    createUser : function ( user, callback ) {
+        let id = usercounter++
+        users[ id ] = user
+        users[ id ].id = id
+        callback(id)
+    },
+
+    checkCredentials : function ( credentials, callback ) {
+        let username = credentials.username
+        let password = credentials.password
+        for ( let i = 0; i < users.length; i++ ) {
+            if ( users[i].username == username && users[i].password == password )
+                return callback( true )
+        }
+        return callback( false )
     }
 
 }

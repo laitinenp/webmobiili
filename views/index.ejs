@@ -17,28 +17,30 @@
         </header>
 
         <main>
-            <div class="container p-3">
-                <form id="messageform">
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" for="mytopic">Kategoria</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mytopic" name="mytopic" placeholder="Kirjoita tähän kategoria">
+            <% if (username) { %>
+                <div class="container p-3">
+                    <form id="messageform">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="mytopic">Kategoria</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="mytopic" name="mytopic" placeholder="Kirjoita tähän kategoria">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" for="mymessage">Viesti</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mymessage" name="mymessage" placeholder="Kirjoita tähän viestisi">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="mymessage">Viesti</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="mymessage" name="mymessage" placeholder="Kirjoita tähän viestisi">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label"> </label>
-                        <div class="col-sm-9">
-                            <button id="sendmessage" type="button" class="btn btn-success">Lähetä</button>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> </label>
+                            <div class="col-sm-9">
+                                <button id="sendmessage" type="button" class="btn btn-success">Lähetä</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
+            <% } %>
             <div class="panel panel-default p-3">
                 <div class="panel-heading">
                     Viestien virta

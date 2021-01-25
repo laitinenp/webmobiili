@@ -5,9 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var messagesRouter = require('./routes/messages');
+var indexRouter =     require('./routes/index');
+var sessionRouter =   require('./routes/session');
+var messagesRouter =  require('./routes/messages');
+var userRouter =      require('./routes/user');
 
 var app = express();
 
@@ -22,9 +23,10 @@ app.use(cookieParser());
 app.use(session({ resave: true, saveUninitialized: true, secret: "mykeyboardcat" }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/messages', messagesRouter);
+app.use('/',          indexRouter);
+app.use('/session',   sessionRouter);
+app.use('/messages',  messagesRouter);
+app.use('/user',      userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

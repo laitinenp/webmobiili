@@ -1,0 +1,56 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <% include head %>
+        <!-- luetaan omat javascriptit viestilistan ja lähetä-painikkeen käsittelemiseksi -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/script/index.js"></script>
+    </head>
+
+    <body class="container-fluid">
+
+        <header>
+            <% include header %>
+        </header>
+
+        <main>
+            <div class="container p-3">
+                <!-- <% if (message) { %> -->
+                    <div class="alert alert-heading alert-dismissible fade show" role="alert">
+                        <strong><%= message %></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                <!-- <% } %> -->
+                <form id="messageform" method="POST" action="/session">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="username">Käyttäjätunnus</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Mikä hyvänsä merkkijono">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="password">Viesti</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Syötä salasanaksi password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> </label>
+                        <div class="col-sm-9">
+                            <button id="login" type="submit" class="btn btn-success">Kirjaudu</button>
+                        </div>
+                    </div>
+                </form>
+            </div> 
+        </main>
+
+        <footer>
+            <% include footer %>
+        </footer>
+    </body>
+</html>

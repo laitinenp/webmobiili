@@ -6,20 +6,21 @@ var db = require('../dbOperations')
 router.get('/', function(req, res, next) {
   db.findMessages(function(msgs) {
     let clone = Array.from( msgs )
+    console.log(req.session.loggedin)
     res.render('index', {
-      title: 'Viestit',
-      messages: clone.reverse()
+      loggedin: req.session.loggedin,
+      username: req.session.username,
+      messages:clone.reverse()
     })
   })
 })
 
 /* GET api-dokumentti. */
 router.get('/apidescr', function(req, res, next) {
-  res.render('apidescr', {})
-})
-
-router.get('/fab', function(req, res, next) {
-  res.render('test', {})
+  res.render('apidescr', { 
+    loggedin: req.session.loggedin,
+    username: req.session.username
+  })
 })
 
 module.exports = router;
